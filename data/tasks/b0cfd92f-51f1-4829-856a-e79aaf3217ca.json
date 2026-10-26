@@ -1,0 +1,105 @@
+{
+  "id": "b0cfd92f-51f1-4829-856a-e79aaf3217ca",
+  "title": "Research five AI startups, compare their products and pri...",
+  "prompt": "Research five AI startups, compare their products and pricing, build an Excel spreadsheet with source URLs, and prepare a launch kit.",
+  "state": "PLANNED",
+  "createdAt": "2026-10-26T08:14:53.545Z",
+  "updatedAt": "2026-10-26T08:14:53.545Z",
+  "plan": [
+    {
+      "id": "43d41617-67a9-44bd-824e-60518d0730e3",
+      "order": 1,
+      "title": "Identify Target Companies",
+      "description": "Select 5 target AI companies (five AI startups, compare their) for product, pricing, and positioning intelligence.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "d5c9176f-64a1-4fe8-8bbe-6fbed39e9bd3",
+      "order": 2,
+      "title": "Navigate Official Domains",
+      "description": "Visit each company official web domain using Playwright browser engine with anti-bot resilience and real screenshot capture.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "6ebf8f7d-e4a7-42be-871b-3089635e3dc0",
+      "order": 3,
+      "title": "Extract Core Intelligence",
+      "description": "Extract product descriptions, pricing tiers, target users, and exact source URLs from DOM elements.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "d56141d7-1206-4001-9510-53bbd75e7a72",
+      "order": 4,
+      "title": "Capture Grounded Evidence",
+      "description": "Store raw text snippets, timestamps, and page screenshots in the immutable evidence ledger.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "d429097c-71bb-496b-819e-f1949c6040be",
+      "order": 5,
+      "title": "Flag Uncertainties & Ambiguities",
+      "description": "Route missing pricing or unverified claims to the Human Review Queue for approval or clarification.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "ffa2dff7-0d1b-4599-a66e-81c4fe9c194a",
+      "order": 6,
+      "title": "Generate Proof Excel Workbook",
+      "description": "Generate structured .xlsx workbook with custom styling, required columns, and explicit missing-data markers.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "18480324-9a23-415d-8c1c-cb479dc24e41",
+      "order": 7,
+      "title": "Independent Verification Pass",
+      "description": "Reopen workbook from disk in isolated verification engine; validate record count, column schemas, and evidence grounding.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "e98d4ecd-00e3-432f-929f-adbf97a805de",
+      "order": 8,
+      "title": "Synthesize Launch Kit",
+      "description": "Compile competitive landscape, product positioning, battle cards, and 3 launch-copy variations with evidence citations.",
+      "status": "pending",
+      "isEditable": true
+    }
+  ],
+  "companies": [],
+  "reviewQueue": [],
+  "timeline": [
+    {
+      "id": "60fb9240-81d1-4ac0-b3eb-0d471ed74986",
+      "taskId": "b0cfd92f-51f1-4829-856a-e79aaf3217ca",
+      "timestamp": "2026-10-26T08:14:53.545Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "Task initialized: \"Research five AI startups, compare their products and pricing, build an Excel spreadsheet with source URLs, and prepare a launch kit.\""
+    },
+    {
+      "id": "a796fdba-43cf-492b-b5cd-6e796dee1b75",
+      "taskId": "b0cfd92f-51f1-4829-856a-e79aaf3217ca",
+      "timestamp": "2026-10-26T08:14:53.545Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "Generated 8-step execution plan for 5 target companies (five AI startups, compare their). Awaiting user approval."
+    }
+  ],
+  "ledger": [],
+  "settings": {
+    "llmProvider": "builtin_heuristic",
+    "apiKey": "",
+    "elevenLabsApiKey": "",
+    "elevenLabsAgentId": "",
+    "headlessBrowser": true,
+    "demoMode": false,
+    "chaosScenario": "none"
+  },
+  "activeStep": "Execution plan generated. Awaiting approval."
+}

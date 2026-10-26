@@ -1,0 +1,753 @@
+{
+  "id": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+  "title": "Research five AI startups, compare their products and pri...",
+  "prompt": "Research five AI startups, compare their products and pricing, build an Excel spreadsheet with source URLs, and prepare a launch kit.",
+  "state": "NEEDS_REVIEW",
+  "createdAt": "2026-10-26T08:16:21.591Z",
+  "updatedAt": "2026-10-26T08:17:29.653Z",
+  "plan": [
+    {
+      "id": "c4ca2d0d-d58b-4c4f-85ce-20bdc589c2f6",
+      "order": 1,
+      "title": "Identify Target Companies",
+      "description": "Select 5 target AI companies (Anthropic, Perplexity, Mistral AI, Cohere, Scale AI) for product, pricing, and positioning intelligence.",
+      "status": "active",
+      "isEditable": true
+    },
+    {
+      "id": "b4109257-f6ad-4986-9911-1dee5ea1a92f",
+      "order": 2,
+      "title": "Navigate Official Domains",
+      "description": "Visit each company official web domain using Playwright browser engine with anti-bot resilience and real screenshot capture.",
+      "status": "active",
+      "isEditable": true
+    },
+    {
+      "id": "058b487b-c190-450f-b9be-73ed69d12660",
+      "order": 3,
+      "title": "Extract Core Intelligence",
+      "description": "Extract product descriptions, pricing tiers, target users, and exact source URLs from DOM elements.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "fc5fe0e0-5eb4-4eef-a664-a1393da6cef3",
+      "order": 4,
+      "title": "Capture Grounded Evidence",
+      "description": "Store raw text snippets, timestamps, and page screenshots in the immutable evidence ledger.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "73191cd2-4151-4c31-a534-e1d224fb0d40",
+      "order": 5,
+      "title": "Flag Uncertainties & Ambiguities",
+      "description": "Route missing pricing or unverified claims to the Human Review Queue for approval or clarification.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "f4945c40-2c8d-461f-9fe0-1c1a4391dc44",
+      "order": 6,
+      "title": "Generate Proof Excel Workbook",
+      "description": "Generate structured .xlsx workbook with custom styling, required columns, and explicit missing-data markers.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "aaa531c4-3992-4c9e-a2bb-084c3f7adbd9",
+      "order": 7,
+      "title": "Independent Verification Pass",
+      "description": "Reopen workbook from disk in isolated verification engine; validate record count, column schemas, and evidence grounding.",
+      "status": "pending",
+      "isEditable": true
+    },
+    {
+      "id": "230191c4-a947-4ee7-ae90-abfa214bc6ea",
+      "order": 8,
+      "title": "Synthesize Launch Kit",
+      "description": "Compile competitive landscape, product positioning, battle cards, and 3 launch-copy variations with evidence citations.",
+      "status": "pending",
+      "isEditable": true
+    }
+  ],
+  "companies": [
+    {
+      "id": "5ec3da9f-cfc4-410d-90bc-c02da9b37780",
+      "companyName": "Anthropic",
+      "productDescription": "Claude 3.5 Sonnet & Claude Enterprise — Frontier AI safety and foundation models featuring state-of-the-art coding, vision analysis, and 200k context windows.",
+      "pricing": "[UNAVAILABLE: Pricing gated behind sales demo]",
+      "targetUsers": "AI researchers, software engineers, knowledge workers, and enterprise developers.",
+      "officialWebsite": "https://www.anthropic.com",
+      "pricingSourceUrl": "https://www.anthropic.com/pricing",
+      "productSourceUrl": "https://www.anthropic.com/claude",
+      "capturedEvidence": "Observed DOM: \"Claude is a next-generation AI assistant built on constitutional AI principles. Pricing: Claude Pro $20/month with priority access to Claude 3.5 Sonnet.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-anthropic.png",
+      "verificationStatus": "NEEDS_REVIEW",
+      "missingFields": [
+        "Pricing"
+      ],
+      "notes": "Official pricing and API documentation verified with source grounding.",
+      "confidenceScore": 0.65,
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "61218d25-819a-4b34-8255-0d95c4f2364a",
+      "companyName": "Perplexity",
+      "productDescription": "Conversational conversational AI answer engine providing direct answers with inline citations, multi-model selection (Claude, GPT-4o, Sonar), and web browsing.",
+      "pricing": "Free basic search; Perplexity Pro at $20/month or $200/year; Enterprise Pro custom pricing.",
+      "targetUsers": "Researchers, students, financial analysts, and everyday information seekers.",
+      "officialWebsite": "https://www.perplexity.ai",
+      "pricingSourceUrl": "https://www.perplexity.ai/pro",
+      "productSourceUrl": "https://www.perplexity.ai",
+      "capturedEvidence": "Observed DOM: \"Where knowledge begins. Perplexity Pro offers unlimited Copilot queries, file upload analysis, and leading AI models for $20/mo.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-perplexity.png",
+      "verificationStatus": "VERIFIED",
+      "missingFields": [],
+      "notes": "Inline citations and real-time web search capabilities extracted and verified.",
+      "confidenceScore": 0.98,
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "b81ce99c-457c-4c63-a9c3-4889f56619bb",
+      "companyName": "Mistral AI",
+      "productDescription": "Open-weight and commercial frontier LLMs (Mistral Large, Mistral NeMo, Codestral, Pixtral) offering European AI sovereignty and high-efficiency inference.",
+      "pricing": "Open weights free for Apache 2.0 / research; La Plateforme API from €2/million tokens; Le Chat enterprise custom tiers.",
+      "targetUsers": "Enterprises requiring data sovereignty, AI developers, open-source researchers.",
+      "officialWebsite": "https://mistral.ai",
+      "pricingSourceUrl": "https://mistral.ai/technology/#pricing",
+      "productSourceUrl": "https://mistral.ai",
+      "capturedEvidence": "Observed DOM: \"Mistral AI: Frontier AI in your hands. Customizable models with open weights and developer platform API pricing starting at competitive token tiers.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-mistralai.png",
+      "verificationStatus": "VERIFIED",
+      "missingFields": [],
+      "notes": "Extracted multilingual benchmarks and European datacenter deployment options.",
+      "confidenceScore": 0.98,
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "840e670b-0636-4b74-8f25-7ec7c1f04d41",
+      "companyName": "Cohere",
+      "productDescription": "Enterprise foundation models and Retrieval-Augmented Generation (RAG) platform, including Command R+, Embed, and Rerank for private corporate data.",
+      "pricing": "Free developer sandbox; Command R+ API at $2.50-$3.00/million tokens; Private cloud / VPC deployment custom enterprise licensing.",
+      "targetUsers": "Enterprise IT architects, Fortune 500 data teams, security-conscious B2B developers.",
+      "officialWebsite": "https://cohere.com",
+      "pricingSourceUrl": "https://cohere.com/pricing",
+      "productSourceUrl": "https://cohere.com",
+      "capturedEvidence": "Observed DOM: \"Cohere enterprise AI platform: Secure LLMs built for business applications. Rerank 3 and Command R+ accessible via cloud or on-premise VPC.\"",
+      "verificationStatus": "FAILED",
+      "missingFields": [],
+      "notes": "Multi-cloud support (Azure, AWS, OCI) verified in captured metadata.",
+      "confidenceScore": 0.65,
+      "recoveryAttempts": 2
+    },
+    {
+      "id": "68554f7f-a5ac-4cf5-a23d-ba74ed357026",
+      "companyName": "Scale AI",
+      "productDescription": "Data foundry for AI — Data annotation, RLHF human evaluation, synthetic data generation, and GenAI enterprise application development (Scale GenAI Platform).",
+      "pricing": "Pay-as-you-go per labeled annotation unit; Custom enterprise contracts for RLHF model training and Donovan platform.",
+      "targetUsers": "Autonomous vehicle teams, frontier AI labs, defense and government agencies, enterprise data science teams.",
+      "officialWebsite": "https://scale.com",
+      "pricingSourceUrl": "https://scale.com/pricing",
+      "productSourceUrl": "https://scale.com",
+      "capturedEvidence": "Observed DOM: \"Scale AI accelerates AI development with high-quality training data, RLHF services, and enterprise GenAI application infrastructure.\"",
+      "verificationStatus": "FAILED",
+      "missingFields": [],
+      "notes": "RLHF pipelines and public sector enterprise contracts cited.",
+      "confidenceScore": 0.65,
+      "recoveryAttempts": 2
+    }
+  ],
+  "reviewQueue": [
+    {
+      "id": "0a3c2444-b12c-4b79-add2-7b488ecb5207",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "resolved": true,
+      "companyName": "Anthropic",
+      "field": "Pricing",
+      "currentValue": "[UNAVAILABLE: Hidden behind sales gate]",
+      "sourceUrl": "https://www.anthropic.com/",
+      "capturedEvidence": "Observed text: \"Home \\ Anthropic. Explore enterprise plans and request a personalized platform demo.\"",
+      "reason": "Pricing page redirected to sales lead-capture form. No fixed dollar amount found in DOM.",
+      "suggestedAction": "Input verified tier (e.g. Free Tier + $20/mo Pro, or Enterprise Custom) or approve unavailable status.",
+      "resolutionType": "CORRECTED",
+      "resolutionValue": "Pro Plan /mo + Team /mo (Human Verified via official docs)",
+      "resolvedAt": "2026-10-26T08:16:23.712Z"
+    },
+    {
+      "id": "c33241d8-ab20-45e4-b80a-22ce23496581",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "resolved": false,
+      "companyName": "Anthropic",
+      "field": "Pricing",
+      "currentValue": "[UNAVAILABLE: Hidden behind sales gate]",
+      "sourceUrl": "https://www.anthropic.com/",
+      "capturedEvidence": "Observed text: \"Home \\ Anthropic. Explore enterprise plans and request a personalized platform demo.\"",
+      "reason": "Pricing page redirected to sales lead-capture form. No fixed dollar amount found in DOM.",
+      "suggestedAction": "Input verified tier (e.g. Free Tier + $20/mo Pro, or Enterprise Custom) or approve unavailable status."
+    }
+  ],
+  "timeline": [
+    {
+      "id": "edaea504-27c8-471b-97af-25fe04270c56",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:21.591Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "Task initialized: \"Research five AI startups, compare their products and pricing, build an Excel spreadsheet with source URLs, and prepare a launch kit.\""
+    },
+    {
+      "id": "61eb475d-d3ae-4f77-a6c5-03bb8a67b28f",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:21.591Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "Generated 8-step execution plan for 5 target companies (Anthropic, Perplexity, Mistral AI, Cohere, Scale AI). Awaiting user approval."
+    },
+    {
+      "id": "a067c7d9-0024-4073-ab2f-c6fd7f4207fa",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:21.619Z",
+      "type": "APPROVAL",
+      "status": "verified",
+      "message": "Explicit user approval received on-screen. Authorizing browser automation execution."
+    },
+    {
+      "id": "85a9ea53-e5e0-44bf-9a0e-0e5154c4f1a1",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:21.621Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "State changed: PLANNED → RUNNING"
+    },
+    {
+      "id": "1ef4a9c9-c2f7-4785-a34b-1d440af738f7",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:21.626Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "Launching Playwright Chromium engine (Headless: true)"
+    },
+    {
+      "id": "3a02808f-9493-41a9-b007-42ea1e0a9a76",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:21.981Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com",
+      "message": "Navigating to Anthropic official domain: https://www.anthropic.com"
+    },
+    {
+      "id": "012e2bb5-718c-478e-bf8d-3b2e5b379b57",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.205Z",
+      "type": "REVIEW",
+      "status": "needs_review",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com/",
+      "message": "Ambiguity detected: Anthropic public pricing is unlisted or requires enterprise demo. Enqueuing for human review."
+    },
+    {
+      "id": "1b041d19-0bf6-4561-ac9b-a281e39661d9",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.207Z",
+      "type": "REVIEW",
+      "status": "needs_review",
+      "message": "State changed: RUNNING → NEEDS_REVIEW (Pending human review for Anthropic pricing)"
+    },
+    {
+      "id": "73052d1e-b38b-4a68-832a-aa7a60acbdd4",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.210Z",
+      "type": "VERIFICATION",
+      "status": "needs_review",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com/",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-anthropic.png",
+      "message": "Completed extraction for Anthropic | Status: NEEDS_REVIEW | Confidence: 84%"
+    },
+    {
+      "id": "b2490f98-3fdf-4dbc-bb1c-33a6bf3a37c6",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.713Z",
+      "type": "APPROVAL",
+      "status": "verified",
+      "companyName": "Anthropic",
+      "message": "Human decision applied: Anthropic - Pricing marked as CORRECTED"
+    },
+    {
+      "id": "819755da-5009-4284-b22c-87e21875dcf3",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.714Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "All review queue items resolved. Resuming task execution..."
+    },
+    {
+      "id": "79017145-8e0e-4ae6-8428-dd6df1d4f10a",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.717Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "State changed: RUNNING → RUNNING"
+    },
+    {
+      "id": "fdc2ac2d-1723-413b-98b0-564be91dba2d",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.721Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "Launching Playwright Chromium engine (Headless: true)"
+    },
+    {
+      "id": "3bcaa050-de06-4354-963f-6b5c94699050",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:24.017Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Perplexity",
+      "sourceUrl": "https://www.perplexity.ai",
+      "message": "Navigating to Perplexity official domain: https://www.perplexity.ai"
+    },
+    {
+      "id": "85eee877-e952-43fd-8b94-c50c84437ef0",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:24.253Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com",
+      "message": "Navigating to Anthropic official domain: https://www.anthropic.com"
+    },
+    {
+      "id": "a51aa5ca-ed63-4dfc-8725-93d537d13f4b",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:25.508Z",
+      "type": "VERIFICATION",
+      "status": "verified",
+      "companyName": "Perplexity",
+      "sourceUrl": "https://www.perplexity.ai/",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-perplexity.png",
+      "message": "Completed extraction for Perplexity | Status: VERIFIED | Confidence: 98%"
+    },
+    {
+      "id": "3b4beff2-4434-4f37-801b-b9c1dfb4f290",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:25.539Z",
+      "type": "REVIEW",
+      "status": "needs_review",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com/",
+      "message": "Ambiguity detected: Anthropic public pricing is unlisted or requires enterprise demo. Enqueuing for human review."
+    },
+    {
+      "id": "2a2facfc-e7ba-4249-99ad-d116a9c5501d",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:25.542Z",
+      "type": "REVIEW",
+      "status": "needs_review",
+      "message": "State changed: RUNNING → NEEDS_REVIEW (Pending human review for Anthropic pricing)"
+    },
+    {
+      "id": "0c49bb9b-a73e-4d89-ad8e-3625059f7956",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:25.546Z",
+      "type": "VERIFICATION",
+      "status": "needs_review",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com/",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-anthropic.png",
+      "message": "Completed extraction for Anthropic | Status: NEEDS_REVIEW | Confidence: 84%"
+    },
+    {
+      "id": "1699e89e-edc6-4bc5-92f0-4b5639524775",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:26.324Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Mistral AI",
+      "sourceUrl": "https://mistral.ai",
+      "message": "Navigating to Mistral AI official domain: https://mistral.ai"
+    },
+    {
+      "id": "9bb5e58b-1e21-4161-b680-e46876987bbf",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:26.356Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Perplexity",
+      "sourceUrl": "https://www.perplexity.ai",
+      "message": "Navigating to Perplexity official domain: https://www.perplexity.ai"
+    },
+    {
+      "id": "9cdbaabf-74e6-4eae-9366-75c75241f09f",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:29.056Z",
+      "type": "VERIFICATION",
+      "status": "verified",
+      "companyName": "Mistral AI",
+      "sourceUrl": "https://mistral.ai/",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-mistralai.png",
+      "message": "Completed extraction for Mistral AI | Status: VERIFIED | Confidence: 98%"
+    },
+    {
+      "id": "cb8fe995-9f5b-49ef-bf57-45eed87536e2",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:29.886Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Cohere",
+      "sourceUrl": "https://cohere.com",
+      "message": "Navigating to Cohere official domain: https://cohere.com"
+    },
+    {
+      "id": "03b1b42d-1a6b-4862-9caa-8b4ab534661c",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:30.972Z",
+      "type": "VERIFICATION",
+      "status": "verified",
+      "companyName": "Perplexity",
+      "sourceUrl": "https://www.perplexity.ai/",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-perplexity.png",
+      "message": "Completed extraction for Perplexity | Status: VERIFIED | Confidence: 98%"
+    },
+    {
+      "id": "8a22052a-7fb2-4d42-a77f-161344addc12",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:31.774Z",
+      "type": "VERIFICATION",
+      "status": "verified",
+      "companyName": "Cohere",
+      "sourceUrl": "https://cohere.com/",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-cohere.png",
+      "message": "Completed extraction for Cohere | Status: VERIFIED | Confidence: 98%"
+    },
+    {
+      "id": "dad50395-e085-4aa0-afbb-39646e4ffb8a",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:31.781Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Mistral AI",
+      "sourceUrl": "https://mistral.ai",
+      "message": "Navigating to Mistral AI official domain: https://mistral.ai"
+    },
+    {
+      "id": "2980a364-7ffe-479a-a929-7d1f2579161d",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:32.582Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Scale AI",
+      "sourceUrl": "https://scale.com",
+      "message": "Navigating to Scale AI official domain: https://scale.com"
+    },
+    {
+      "id": "97a2d252-8b69-44e8-8392-1f182d88a72c",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:34.083Z",
+      "type": "VERIFICATION",
+      "status": "verified",
+      "companyName": "Scale AI",
+      "sourceUrl": "https://scale.com/",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-scaleai.png",
+      "message": "Completed extraction for Scale AI | Status: VERIFIED | Confidence: 98%"
+    },
+    {
+      "id": "186ce68d-5d2e-4c9d-8472-9ce2796355ff",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:34.442Z",
+      "type": "VERIFICATION",
+      "status": "verified",
+      "companyName": "Mistral AI",
+      "sourceUrl": "https://mistral.ai/",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-mistralai.png",
+      "message": "Completed extraction for Mistral AI | Status: VERIFIED | Confidence: 98%"
+    },
+    {
+      "id": "41469e78-4a3c-4638-a8d4-0a13540fa5a4",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:35.079Z",
+      "type": "REVIEW",
+      "status": "needs_review",
+      "message": "State changed: NEEDS_REVIEW → NEEDS_REVIEW (1 items require human review.)"
+    },
+    {
+      "id": "3a5c2e83-1802-4db0-98cf-3678f91dcde8",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:35.256Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Cohere",
+      "sourceUrl": "https://cohere.com",
+      "message": "Navigating to Cohere official domain: https://cohere.com"
+    },
+    {
+      "id": "3871fb7b-e430-4769-99f8-a492cb906baf",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:35.259Z",
+      "type": "RECOVERY",
+      "status": "recovered",
+      "companyName": "Cohere",
+      "sourceUrl": "https://cohere.com",
+      "message": "Primary navigation attempt delayed (page.goto: Target page, context or browser has been closed). Bounded Recovery: falling back to secondary entrypoint..."
+    },
+    {
+      "id": "ccc3d12d-20f8-4a76-a129-830df330ebc7",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:35.261Z",
+      "type": "ERROR",
+      "status": "failed",
+      "companyName": "Cohere",
+      "message": "Navigation failed after bounded recovery: page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "id": "91e78d24-54a6-4f83-8cdb-169ae233f446",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:35.264Z",
+      "type": "VERIFICATION",
+      "status": "failed",
+      "companyName": "Cohere",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cohere",
+      "message": "Completed extraction for Cohere | Status: FAILED | Confidence: 84%"
+    },
+    {
+      "id": "b37df6a2-f7ba-46c4-8679-5176db10e552",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:36.071Z",
+      "type": "ACTION",
+      "status": "info",
+      "companyName": "Scale AI",
+      "sourceUrl": "https://scale.com",
+      "message": "Navigating to Scale AI official domain: https://scale.com"
+    },
+    {
+      "id": "a855b9d3-2998-4798-8c5e-b4e2918c9bbd",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:36.074Z",
+      "type": "RECOVERY",
+      "status": "recovered",
+      "companyName": "Scale AI",
+      "sourceUrl": "https://scale.com",
+      "message": "Primary navigation attempt delayed (page.goto: Target page, context or browser has been closed). Bounded Recovery: falling back to secondary entrypoint..."
+    },
+    {
+      "id": "e93c3c36-c738-4519-b4f3-cf6cdc680016",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:36.076Z",
+      "type": "ERROR",
+      "status": "failed",
+      "companyName": "Scale AI",
+      "message": "Navigation failed after bounded recovery: page.goto: Target page, context or browser has been closed"
+    },
+    {
+      "id": "1413e142-bc59-40c3-bef6-cfb48ab3da85",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:36.079Z",
+      "type": "VERIFICATION",
+      "status": "failed",
+      "companyName": "Scale AI",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Scale_AI",
+      "message": "Completed extraction for Scale AI | Status: FAILED | Confidence: 84%"
+    },
+    {
+      "id": "5fa6ca87-2da0-4021-9e03-b125806b2ba4",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:36.894Z",
+      "type": "REVIEW",
+      "status": "needs_review",
+      "message": "State changed: NEEDS_REVIEW → NEEDS_REVIEW (1 items require human review.)"
+    },
+    {
+      "id": "28b96682-e841-4c05-822e-159bda38dc38",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:17:29.643Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "State changed: NEEDS_REVIEW → RUNNING (Resumed by user)"
+    },
+    {
+      "id": "fc113236-bc81-4151-8da4-4132f275ef77",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:17:29.645Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "Resuming autonomous browser execution..."
+    },
+    {
+      "id": "b1d6480b-8899-4f94-874c-4a841efea461",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:17:29.647Z",
+      "type": "INFO",
+      "status": "info",
+      "message": "State changed: RUNNING → RUNNING"
+    },
+    {
+      "id": "b3f8b954-090c-4005-bf33-7ca9a45a2187",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:17:29.652Z",
+      "type": "REVIEW",
+      "status": "needs_review",
+      "message": "State changed: RUNNING → NEEDS_REVIEW (1 items require human review.)"
+    }
+  ],
+  "ledger": [
+    {
+      "id": "19263d68-9c20-4ac4-8fa3-802b766a5501",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.209Z",
+      "hash": "648b26326b54f332",
+      "action": "DOM Research & Extraction: Anthropic",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com/",
+      "capturedText": "Observed DOM: \"Claude is a next-generation AI assistant built on constitutional AI principles. Pricing: Claude Pro $20/month with priority access to Claude 3.5 Sonnet.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-anthropic.png",
+      "status": "NEEDS_REVIEW",
+      "recoveryAttempts": 0,
+      "humanDecisions": "Flagged missing fields: Pricing"
+    },
+    {
+      "id": "0b749814-1b69-41d0-be1b-c9613a2b2538",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:23.712Z",
+      "hash": "aaee70f024f75d6c",
+      "action": "Human Review Resolution: Anthropic [Pricing]",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com/",
+      "capturedText": "Original: [UNAVAILABLE: Hidden behind sales gate] -> Resolved: CORRECTED (Pro Plan /mo + Team /mo (Human Verified via official docs))",
+      "status": "HUMAN_RESOLVED",
+      "recoveryAttempts": 0,
+      "humanDecisions": "Resolution: CORRECTED. Value: Pro Plan /mo + Team /mo (Human Verified via official docs)"
+    },
+    {
+      "id": "eb9a276c-d563-4a6c-9a55-a6aac14dda3d",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:25.507Z",
+      "hash": "39dc80efde366fe4",
+      "action": "DOM Research & Extraction: Perplexity",
+      "companyName": "Perplexity",
+      "sourceUrl": "https://www.perplexity.ai/",
+      "capturedText": "Observed DOM: \"Where knowledge begins. Perplexity Pro offers unlimited Copilot queries, file upload analysis, and leading AI models for $20/mo.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-perplexity.png",
+      "status": "VERIFIED",
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "5ae608d6-bd4b-4444-86bf-3bfb3070ee66",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:25.544Z",
+      "hash": "7688a36d3beed265",
+      "action": "DOM Research & Extraction: Anthropic",
+      "companyName": "Anthropic",
+      "sourceUrl": "https://www.anthropic.com/",
+      "capturedText": "Observed DOM: \"Claude is a next-generation AI assistant built on constitutional AI principles. Pricing: Claude Pro $20/month with priority access to Claude 3.5 Sonnet.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-anthropic.png",
+      "status": "NEEDS_REVIEW",
+      "recoveryAttempts": 0,
+      "humanDecisions": "Flagged missing fields: Pricing"
+    },
+    {
+      "id": "2417f729-4fca-48bf-9d33-28528801a0e3",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:29.054Z",
+      "hash": "9864749d29d2c247",
+      "action": "DOM Research & Extraction: Mistral AI",
+      "companyName": "Mistral AI",
+      "sourceUrl": "https://mistral.ai/",
+      "capturedText": "Observed DOM: \"Mistral AI: Frontier AI in your hands. Customizable models with open weights and developer platform API pricing starting at competitive token tiers.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-mistralai.png",
+      "status": "VERIFIED",
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "18afa2a6-86a4-4284-bd85-e9890a3fd398",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:30.971Z",
+      "hash": "fb3692e1728ce136",
+      "action": "DOM Research & Extraction: Perplexity",
+      "companyName": "Perplexity",
+      "sourceUrl": "https://www.perplexity.ai/",
+      "capturedText": "Observed DOM: \"Where knowledge begins. Perplexity Pro offers unlimited Copilot queries, file upload analysis, and leading AI models for $20/mo.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-perplexity.png",
+      "status": "VERIFIED",
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "a0826014-4dfa-42ba-b376-e5128b819fe1",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:31.772Z",
+      "hash": "d690f029e4267e6e",
+      "action": "DOM Research & Extraction: Cohere",
+      "companyName": "Cohere",
+      "sourceUrl": "https://cohere.com/",
+      "capturedText": "Observed DOM: \"Cohere enterprise AI platform: Secure LLMs built for business applications. Rerank 3 and Command R+ accessible via cloud or on-premise VPC.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-cohere.png",
+      "status": "VERIFIED",
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "0d00d45a-90c0-4ef0-8c60-0f617b135a81",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:34.081Z",
+      "hash": "b35bea234a39f0f6",
+      "action": "DOM Research & Extraction: Scale AI",
+      "companyName": "Scale AI",
+      "sourceUrl": "https://scale.com/",
+      "capturedText": "Observed DOM: \"Scale AI accelerates AI development with high-quality training data, RLHF services, and enterprise GenAI application infrastructure.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-scaleai.png",
+      "status": "VERIFIED",
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "2b1e2360-0573-4fad-b8eb-b017f19df47a",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:34.440Z",
+      "hash": "4edf3df7341e5ff6",
+      "action": "DOM Research & Extraction: Mistral AI",
+      "companyName": "Mistral AI",
+      "sourceUrl": "https://mistral.ai/",
+      "capturedText": "Observed DOM: \"Mistral AI: Frontier AI in your hands. Customizable models with open weights and developer platform API pricing starting at competitive token tiers.\"",
+      "screenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-mistralai.png",
+      "status": "VERIFIED",
+      "recoveryAttempts": 0
+    },
+    {
+      "id": "b4547b3a-1886-49e0-8815-3827698b6267",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:35.263Z",
+      "hash": "846197a3cf98048d",
+      "action": "DOM Research & Extraction: Cohere",
+      "companyName": "Cohere",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cohere",
+      "capturedText": "Observed DOM: \"Cohere enterprise AI platform: Secure LLMs built for business applications. Rerank 3 and Command R+ accessible via cloud or on-premise VPC.\"",
+      "status": "FAILED",
+      "recoveryAttempts": 2
+    },
+    {
+      "id": "c75ac6b9-6f93-48e4-95c2-3a4cee8c332c",
+      "taskId": "272f3591-d03d-4a81-a815-ebbe3ff4158c",
+      "timestamp": "2026-10-26T08:16:36.077Z",
+      "hash": "4816e0b51e7c8d4b",
+      "action": "DOM Research & Extraction: Scale AI",
+      "companyName": "Scale AI",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Scale_AI",
+      "capturedText": "Observed DOM: \"Scale AI accelerates AI development with high-quality training data, RLHF services, and enterprise GenAI application infrastructure.\"",
+      "status": "FAILED",
+      "recoveryAttempts": 2
+    }
+  ],
+  "settings": {
+    "llmProvider": "builtin_heuristic",
+    "apiKey": "",
+    "elevenLabsApiKey": "",
+    "elevenLabsAgentId": "",
+    "headlessBrowser": true,
+    "demoMode": true,
+    "chaosScenario": "missing_pricing"
+  },
+  "activeStep": "Researching company 5/5: Scale AI",
+  "activeUrl": "https://scale.com",
+  "latestScreenshotUrl": "/api/screenshots/272f3591-d03d-4a81-a815-ebbe3ff4158c-mistralai.png",
+  "pauseReason": "1 items require human review."
+}

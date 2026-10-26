@@ -1,0 +1,11 @@
+{
+  "name": "webpilot-proofflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WebPilot ProofFlow - When AI gets stuck, it recovers. When it can't, it asks. When it finishes, it proves.",
+  "scripts": {
+    "dev:server": "cd server && npm.cmd run dev",
+    "dev:client": "cd client && npm.cmd run dev",
+    "install:all": "cd server && npm.cmd install && cd ../client && npm.cmd install"
+  }
+}
