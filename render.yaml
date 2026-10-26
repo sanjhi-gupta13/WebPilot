@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: webpilot-backend
+    runtime: node
+    region: oregon
+    rootDir: server
+    buildCommand: npm install && npx playwright install --with-deps chromium
+    startCommand: npm run start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+      - key: HEADLESS
+        value: "true"
+      - key: DATA_DIR
+        value: /opt/render/project/src/data
+      - key: LLM_PROVIDER
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ELEVENLABS_AGENT_ID
+        sync: false
+    disk:
+      name: webpilot-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1

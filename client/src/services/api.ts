@@ -1,6 +1,8 @@
 import { WebPilotTask, TaskSettings, PlanStep, ReviewResolutionType } from '../types';
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : 'http://localhost:3001/api';
 
 export const api = {
   async getSettings(): Promise<{ settings: TaskSettings; services: any }> {

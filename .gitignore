@@ -3,5 +3,7 @@ dist/
 .env
 .env.local
 data/screenshots/
+data/tasks/
+data/artifacts/
 *.log
 .DS_Store

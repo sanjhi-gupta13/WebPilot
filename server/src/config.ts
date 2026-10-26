@@ -5,7 +5,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
-export const DATA_DIR = path.resolve(__dirname, '../../data');
+// On Render, DATA_DIR env var points to the persistent disk mount (/opt/render/project/src/data).
+// Locally it falls back to the project-root /data directory.
+export const DATA_DIR = process.env.DATA_DIR || path.resolve(__dirname, '../../data');
 export const TASKS_DIR = path.join(DATA_DIR, 'tasks');
 export const ARTIFACTS_DIR = path.join(DATA_DIR, 'artifacts');
 export const SCREENSHOTS_DIR = path.join(DATA_DIR, 'screenshots');
