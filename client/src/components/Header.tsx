@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Globe,
   CheckCircle2,
-  AlertTriangle,
   Mic,
   Shield,
   Pause,
@@ -32,27 +31,27 @@ export const Header: React.FC<HeaderProps> = ({
   const getStateBadge = (state?: TaskState) => {
     switch (state) {
       case 'RUNNING':
-        return { text: 'RUNNING', color: 'bg-blue-500/15 text-blue-400 border-blue-500/40 animate-pulse' };
+        return { text: 'Running Browser', color: 'bg-blue-50 text-blue-700 border-blue-200 animate-pulse' };
       case 'RECOVERING':
-        return { text: 'RECOVERING (BOUNDED)', color: 'bg-amber-500/20 text-amber-300 border-amber-500/50 animate-pulse' };
+        return { text: 'Self-Healing Recovery', color: 'bg-amber-50 text-amber-800 border-amber-200 animate-pulse' };
       case 'NEEDS_REVIEW':
-        return { text: 'NEEDS HUMAN REVIEW', color: 'bg-amber-500 text-slate-950 font-bold border-amber-400' };
+        return { text: 'Needs Your Review', color: 'bg-amber-100 text-amber-900 border-amber-300 font-semibold' };
       case 'PAUSED_FOR_TAKEOVER':
-        return { text: 'HUMAN TAKEOVER ACTIVE', color: 'bg-purple-500/20 text-purple-300 border-purple-500/50' };
+        return { text: 'Manual Control Active', color: 'bg-purple-50 text-purple-700 border-purple-200 font-semibold' };
       case 'AWAITING_APPROVAL':
-        return { text: 'AWAITING APPROVAL', color: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40' };
+        return { text: 'Awaiting Your Approval', color: 'bg-indigo-50 text-indigo-700 border-indigo-200' };
       case 'VERIFYING':
-        return { text: 'INDEPENDENT VERIFICATION', color: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 animate-pulse' };
+        return { text: 'Verifying Results...', color: 'bg-cyan-50 text-cyan-800 border-cyan-200 animate-pulse' };
       case 'COMPLETED':
-        return { text: 'VERIFIED & COMPLETED', color: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40' };
+        return { text: 'Verified & Complete', color: 'bg-emerald-50 text-emerald-700 border-emerald-200 font-semibold' };
       case 'FAILED':
-        return { text: 'EXECUTION FAILED', color: 'bg-rose-500/20 text-rose-400 border-rose-500/40' };
+        return { text: 'Stopped with Issues', color: 'bg-rose-50 text-rose-700 border-rose-200 font-semibold' };
       case 'CANCELLED':
-        return { text: 'CANCELLED', color: 'bg-slate-700/40 text-slate-400 border-slate-600' };
+        return { text: 'Cancelled', color: 'bg-slate-100 text-slate-600 border-slate-200' };
       case 'PLANNED':
-        return { text: 'PLAN READY', color: 'bg-blue-900/40 text-blue-300 border-blue-700' };
+        return { text: 'Plan Ready', color: 'bg-blue-50 text-blue-700 border-blue-200' };
       default:
-        return { text: 'IDLE', color: 'bg-slate-800 text-slate-400 border-slate-700' };
+        return { text: 'Ready', color: 'bg-slate-100 text-slate-600 border-slate-200' };
     }
   };
 
@@ -61,58 +60,60 @@ export const Header: React.FC<HeaderProps> = ({
   const isTakeover = task?.state === 'PAUSED_FOR_TAKEOVER';
 
   return (
-    <header className="h-14 bg-[#0B0F19] border-b border-slate-800/80 px-4 flex items-center justify-between shrink-0 select-none">
-      {/* Left: Active Task Info */}
+    <header className="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between shrink-0 select-none shadow-sm">
+      {/* Left: Task summary */}
       <div className="flex items-center gap-3 min-w-0">
         <div className="flex items-center gap-2 min-w-0">
-          <span className="text-xs font-mono text-slate-400 shrink-0">TASK:</span>
-          <h1 className="text-xs font-semibold text-slate-200 truncate max-w-sm md:max-w-md">
+          <span className="text-xs font-semibold text-slate-400 shrink-0 uppercase tracking-wide">
+            Task:
+          </span>
+          <h1 className="text-xs sm:text-sm font-semibold text-slate-800 truncate max-w-sm md:max-w-lg">
             {task ? task.title : 'Ready for instruction'}
           </h1>
         </div>
 
-        <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded-full border ${badge.color} shrink-0`}>
+        <span className={`text-xs px-2.5 py-0.5 rounded-full border font-medium shrink-0 ${badge.color}`}>
           {badge.text}
         </span>
 
         {demoMode && (
-          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30 shrink-0">
-            CHAOS LAB ON
+          <span className="hidden sm:inline text-[11px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-medium">
+            Demo Mode Active
           </span>
         )}
       </div>
 
-      {/* Center: System Service Health Pills */}
-      <div className="hidden lg:flex items-center gap-2">
-        <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-[#0F1626] border border-slate-800 text-[11px] text-slate-300">
-          <Globe className="w-3 h-3 text-blue-400" />
+      {/* Center: System status pills (simplified & friendly) */}
+      <div className="hidden lg:flex items-center gap-2.5">
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs text-slate-600">
+          <Globe className="w-3.5 h-3.5 text-blue-600" />
           <span>Playwright</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         </div>
 
-        <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-[#0F1626] border border-slate-800 text-[11px] text-slate-300">
-          <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs text-slate-600">
+          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
           <span>Verification Engine</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         </div>
 
-        <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-[#0F1626] border border-slate-800 text-[11px] text-slate-300">
-          <Shield className="w-3 h-3 text-indigo-400" />
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-xs text-slate-600">
+          <Shield className="w-3.5 h-3.5 text-indigo-600" />
           <span>Security Guardrail</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         </div>
       </div>
 
-      {/* Right: Controls & Voice trigger */}
+      {/* Right: Actions */}
       <div className="flex items-center gap-2">
         {/* Voice Trigger */}
         <button
           onClick={onOpenVoice}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-xs font-medium transition-all"
-          title="ElevenLabs Voice Assistant"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-semibold transition-all shadow-sm"
+          title="ElevenLabs Voice Agent"
         >
-          <Mic className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Voice Agent</span>
+          <Mic className="w-3.5 h-3.5 text-blue-600" />
+          <span>Voice Agent</span>
         </button>
 
         {/* Task Control Buttons */}
@@ -121,22 +122,22 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Take Over */}
             <button
               onClick={onTakeOver}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium border transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
                 isTakeover
-                  ? 'bg-purple-600 text-white border-purple-500'
-                  : 'bg-slate-800/60 hover:bg-slate-800 text-slate-300 border-slate-700'
+                  ? 'bg-purple-600 text-white border-purple-600 shadow-sm'
+                  : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200 shadow-sm'
               }`}
               title="Pause automation and take manual control"
             >
               <UserCheck className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">{isTakeover ? 'Release Takeover' : 'Take Over'}</span>
+              <span className="hidden md:inline">{isTakeover ? 'Resume Auto' : 'Manual Takeover'}</span>
             </button>
 
             {/* Pause / Resume */}
             {(isRunning || isTakeover) && (
               <button
                 onClick={onPauseResume}
-                className="p-1.5 rounded-md bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700 transition-all"
+                className="p-2 rounded-lg bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm transition-all"
                 title={isRunning ? 'Pause task' : 'Resume task'}
               >
                 {isRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -147,7 +148,7 @@ export const Header: React.FC<HeaderProps> = ({
             {isRunning && (
               <button
                 onClick={onCancel}
-                className="flex items-center gap-1 p-1.5 md:px-2.5 md:py-1.5 rounded-md bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/50 text-xs font-medium transition-all"
+                className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-medium transition-all"
                 title="Cancel Task"
               >
                 <XOctagon className="w-3.5 h-3.5" />

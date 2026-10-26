@@ -1,16 +1,14 @@
 import React from 'react';
 import {
   LayoutDashboard,
-  PlusCircle,
   PlayCircle,
   AlertCircle,
-  BookOpen,
   FileSpreadsheet,
   Rocket,
   History,
-  Settings,
   ShieldCheck,
   Zap,
+  Sparkles,
 } from 'lucide-react';
 import { ActiveNavTab } from '../types';
 
@@ -31,60 +29,74 @@ export const Sidebar: React.FC<SidebarProps> = ({
   demoMode,
   onToggleDemoMode,
 }) => {
+  const isRunning = taskState && ['RUNNING', 'RECOVERING', 'VERIFYING'].includes(taskState);
+
   const navItems = [
-    { id: 'dashboard' as ActiveNavTab, label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'new_task' as ActiveNavTab, label: 'New Task', icon: PlusCircle },
     {
-      id: 'execution' as ActiveNavTab,
-      label: 'Current Execution',
-      icon: PlayCircle,
-      badge: taskState && ['RUNNING', 'RECOVERING', 'VERIFYING'].includes(taskState) ? taskState : undefined,
-      badgeColor: taskState === 'RECOVERING' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' : 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+      id: 'dashboard' as ActiveNavTab,
+      label: 'Workspace',
+      icon: LayoutDashboard,
+      description: 'Research, Plan & Live Run',
     },
     {
       id: 'review_queue' as ActiveNavTab,
       label: 'Review Queue',
       icon: AlertCircle,
-      badge: reviewCount > 0 ? `${reviewCount}` : undefined,
-      badgeColor: 'bg-amber-500 text-slate-950 font-bold',
+      badge: reviewCount > 0 ? `${reviewCount} need input` : undefined,
+      badgeColor: 'bg-amber-100 text-amber-800 border-amber-300 font-semibold',
+      description: 'Human approval queue',
     },
-    { id: 'verified_results' as ActiveNavTab, label: 'Verified Results', icon: FileSpreadsheet },
-    { id: 'launch_kit' as ActiveNavTab, label: 'Launch Kit', icon: Rocket },
-    { id: 'ledger' as ActiveNavTab, label: 'Evidence Ledger', icon: BookOpen },
-    { id: 'task_history' as ActiveNavTab, label: 'Task History', icon: History },
-    { id: 'settings' as ActiveNavTab, label: 'Settings & Chaos', icon: Settings },
+    {
+      id: 'verified_results' as ActiveNavTab,
+      label: 'Excel Report',
+      icon: FileSpreadsheet,
+      description: 'Verified spreadsheet & downloads',
+    },
+    {
+      id: 'launch_kit' as ActiveNavTab,
+      label: 'Launch Kit',
+      icon: Rocket,
+      description: 'Positioning & social copy',
+    },
+    {
+      id: 'task_history' as ActiveNavTab,
+      label: 'Task History',
+      icon: History,
+      description: 'Saved past research',
+    },
   ];
 
   return (
-    <aside className="w-64 bg-[#0B0F19] border-r border-slate-800/80 flex flex-col h-screen select-none shrink-0">
+    <aside className="w-64 bg-white border-r border-slate-200 flex flex-col h-screen select-none shrink-0 shadow-sm">
       {/* Brand Header */}
-      <div className="p-4 border-b border-slate-800/80">
+      <div className="p-4 border-b border-slate-100">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-glow-sm shadow-blue-500/30 border border-blue-400/40">
+          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm">
             <ShieldCheck className="w-5 h-5 text-white" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-sm tracking-tight text-white">WebPilot</span>
-              <span className="text-xs px-1.5 py-0.5 rounded bg-blue-900/60 text-blue-300 font-mono border border-blue-700/50">ProofFlow</span>
+              <span className="font-bold text-sm text-slate-900 tracking-tight">WebPilot</span>
+              <span className="text-[11px] font-semibold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                ProofFlow
+              </span>
             </div>
-            <p className="text-[10px] text-slate-400 font-mono tracking-wider">AI BROWSER AGENT</p>
+            <p className="text-[11px] text-slate-400 font-medium">AI Browser Agent</p>
           </div>
         </div>
 
-        {/* Micro Tagline */}
-        <div className="mt-3 px-2 py-1.5 rounded bg-slate-900/90 border border-slate-800 text-[11px] text-slate-400 leading-tight">
-          <span className="text-blue-400 font-medium">Recovers.</span>{' '}
-          <span className="text-amber-400 font-medium">Asks.</span>{' '}
-          <span className="text-emerald-400 font-medium">Proves.</span>
+        {/* Friendly Tagline */}
+        <div className="mt-3 px-2.5 py-2 rounded-lg bg-slate-50 border border-slate-100 text-[11px] text-slate-600 leading-snug">
+          “When AI gets stuck, it <span className="font-semibold text-amber-700">recovers</span>. When it can’t, it <span className="font-semibold text-blue-700">asks</span>. When it finishes, it <span className="font-semibold text-emerald-700">proves</span>.”
         </div>
       </div>
 
-      {/* Nav Menu */}
-      <nav className="flex-1 p-2.5 space-y-1 overflow-y-auto">
-        <div className="px-2 pb-1.5 text-[10px] font-semibold tracking-wider text-slate-400 uppercase font-mono">
-          Workspace
+      {/* Main Navigation */}
+      <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+        <div className="px-2 pb-1 text-[10px] font-bold tracking-wider text-slate-400 uppercase">
+          Navigation
         </div>
+
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;
@@ -92,19 +104,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-md text-xs font-medium transition-all ${
+              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition-all ${
                 isActive
-                  ? 'bg-blue-600/15 text-blue-400 border border-blue-500/30 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 border border-transparent'
+                  ? 'bg-blue-50 text-blue-700 border border-blue-200 shadow-sm font-semibold'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-transparent'
               }`}
             >
               <div className="flex items-center gap-2.5">
-                <Icon className={`w-4 h-4 ${isActive ? 'text-blue-400' : 'text-slate-400'}`} />
-                <span>{item.label}</span>
+                <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />
+                <div className="text-left">
+                  <div className="leading-tight">{item.label}</div>
+                  <div className="text-[10px] text-slate-400 font-normal">{item.description}</div>
+                </div>
               </div>
               {item.badge && (
                 <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full border ${item.badgeColor || 'bg-slate-800 text-slate-300'}`}
+                  className={`text-[10px] px-2 py-0.5 rounded-full border ${item.badgeColor || 'bg-slate-100 text-slate-600'}`}
                 >
                   {item.badge}
                 </span>
@@ -114,35 +129,35 @@ export const Sidebar: React.FC<SidebarProps> = ({
         })}
       </nav>
 
-      {/* Demo / Chaos Mode Toggle Box */}
-      <div className="p-3 border-t border-slate-800/80 bg-slate-950/40">
-        <div className="p-2.5 rounded-lg border border-slate-800 bg-[#0F1626]">
-          <div className="flex items-center justify-between mb-1.5">
+      {/* Chaos / Demo Mode Box */}
+      <div className="p-3 border-t border-slate-100 bg-slate-50/70">
+        <div className="p-3 rounded-lg border border-slate-200 bg-white shadow-2xl">
+          <div className="flex items-center justify-between mb-1">
             <div className="flex items-center gap-1.5">
-              <Zap className={`w-3.5 h-3.5 ${demoMode ? 'text-amber-400' : 'text-slate-500'}`} />
-              <span className="text-xs font-semibold text-slate-200">Demo & Chaos Mode</span>
+              <Zap className={`w-3.5 h-3.5 ${demoMode ? 'text-amber-600' : 'text-slate-400'}`} />
+              <span className="text-xs font-semibold text-slate-800">Demo & Chaos Mode</span>
             </div>
             <button
               onClick={onToggleDemoMode}
               className={`relative inline-flex h-4 w-7 items-center rounded-full transition-colors ${
-                demoMode ? 'bg-amber-500' : 'bg-slate-700'
+                demoMode ? 'bg-amber-500' : 'bg-slate-300'
               }`}
-              title="Toggle Demo & Chaos Scenarios"
+              title="Toggle Demo Mode"
             >
               <span
-                className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${
+                className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform shadow-sm ${
                   demoMode ? 'translate-x-3.5' : 'translate-x-0.5'
                 }`}
               />
             </button>
           </div>
-          <p className="text-[10px] text-slate-400 leading-normal">
-            {demoMode ? 'Active: Chaos injections & recovery tests enabled.' : 'Live Mode: Real Playwright navigation.'}
+          <p className="text-[11px] text-slate-500 leading-normal">
+            {demoMode ? 'Simulating timeouts & review triggers for demos.' : 'Live Mode: Real Playwright web automation.'}
           </p>
         </div>
 
-        {/* Hackathon Credentials Footer */}
-        <div className="mt-2 text-center text-[10px] text-slate-400 font-mono">
+        {/* Footer */}
+        <div className="mt-2 text-center text-[10px] text-slate-400">
           Microsoft Hackathon 2026
         </div>
       </div>

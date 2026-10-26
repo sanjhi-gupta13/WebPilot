@@ -25,7 +25,6 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
   const [isProcessing, setIsProcessing] = useState(false);
   const recognitionRef = useRef<any>(null);
 
-  // Initialize Speech Recognition if supported
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const SpeechRecognition =
@@ -58,7 +57,7 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
 
   const toggleListening = () => {
     if (!recognitionRef.current) {
-      alert('Speech Recognition is not supported on this browser. You can type voice commands below.');
+      alert('Speech Recognition is not supported on this browser. You can type commands below.');
       return;
     }
 
@@ -94,7 +93,7 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
         }
       }
     } catch (e: any) {
-      setAiResponse(`Voice service note: ${e.message}`);
+      setAiResponse(`Voice note: ${e.message}`);
     } finally {
       setIsProcessing(false);
     }
@@ -113,15 +112,15 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-      <div className="w-full max-w-lg bg-[#0F1626] border border-slate-700/80 rounded-xl shadow-2xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+      <div className="w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-[#0B0F19]">
+        <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-blue-500 animate-ping"></div>
-            <h3 className="font-semibold text-sm text-slate-100 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-blue-400" />
-              ElevenLabs Voice Agent & Guardrail
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping"></div>
+            <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-blue-600" />
+              ElevenLabs Voice Agent & Policy Guard
             </h3>
           </div>
           <button
@@ -130,7 +129,7 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
               window.speechSynthesis?.cancel();
               onClose();
             }}
-            className="p-1 rounded-md text-slate-400 hover:text-slate-200 hover:bg-slate-800"
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-200"
           >
             <X className="w-5 h-5" />
           </button>
@@ -143,62 +142,62 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
             <div
               className={`w-24 h-24 rounded-full flex items-center justify-center transition-all duration-300 ${
                 isListening
-                  ? 'bg-blue-600/30 ring-8 ring-blue-500/20 scale-105'
-                  : 'bg-slate-800/80 border border-slate-700'
+                  ? 'bg-blue-100 ring-8 ring-blue-50 scale-105'
+                  : 'bg-slate-100 border border-slate-200'
               }`}
             >
               <button
                 onClick={toggleListening}
-                className={`w-16 h-16 rounded-full flex items-center justify-center text-white shadow-lg transition-transform ${
+                className={`w-16 h-16 rounded-full flex items-center justify-center text-white shadow-md transition-transform ${
                   isListening
                     ? 'bg-gradient-to-r from-blue-600 to-indigo-600 animate-pulse'
-                    : 'bg-blue-600 hover:bg-blue-500'
+                    : 'bg-blue-600 hover:bg-blue-700'
                 }`}
                 title={isListening ? 'Click to stop listening' : 'Click to speak'}
               >
-                {isListening ? <Mic className="w-8 h-8 text-white" /> : <MicOff className="w-8 h-8 text-slate-200" />}
+                {isListening ? <Mic className="w-8 h-8 text-white" /> : <MicOff className="w-8 h-8 text-white" />}
               </button>
             </div>
             {isListening && (
-              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[11px] font-mono text-blue-400 whitespace-nowrap animate-pulse">
-                Listening to voice input...
+              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[11px] font-semibold text-blue-600 whitespace-nowrap animate-pulse">
+                Listening to your voice...
               </span>
             )}
           </div>
 
           {/* Transcript / Spoken Status */}
-          <div className="w-full space-y-2 mt-4">
-            <div className="p-3 rounded-lg bg-[#070B14] border border-slate-800 text-left text-xs min-h-[50px]">
-              <span className="text-[10px] uppercase font-mono text-slate-400 block mb-1">Live Transcript:</span>
-              <p className="text-slate-200 italic font-mono">
-                {transcript || (isListening ? 'Speak now into your microphone...' : 'Press microphone or choose a quick command below.')}
+          <div className="w-full space-y-2.5 mt-4">
+            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-left text-xs min-h-[50px]">
+              <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">Live Transcript:</span>
+              <p className="text-slate-700 italic">
+                {transcript || (isListening ? 'Speak now into your microphone...' : 'Press the microphone or choose a quick prompt below.')}
               </p>
             </div>
 
             {/* Safety Policy Alert Banner if User tried to voice-approve */}
             {safetyAlert && (
-              <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-600/60 text-left text-xs text-rose-200 flex items-start gap-2.5">
-                <ShieldAlert className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-left text-xs text-rose-800 flex items-start gap-2.5 shadow-sm">
+                <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="font-semibold block text-rose-300">Safety Policy Enforced:</strong>
+                  <strong className="font-bold block text-rose-900">Safety Policy Enforced:</strong>
                   <span>{safetyAlert}</span>
                 </div>
               </div>
             )}
 
             {/* AI Agent Spoken Response */}
-            <div className="p-3 rounded-lg bg-blue-950/20 border border-blue-900/40 text-left text-xs text-slate-200 flex items-start gap-2">
-              <Volume2 className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-xl bg-blue-50/70 border border-blue-200 text-left text-xs text-slate-800 flex items-start gap-2.5">
+              <Volume2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
               <div>
-                <span className="text-[10px] uppercase font-mono text-blue-400 block mb-0.5">Agent Response:</span>
-                <p>{aiResponse}</p>
+                <span className="text-[10px] uppercase font-bold text-blue-700 block mb-0.5">Agent Response:</span>
+                <p className="leading-relaxed">{aiResponse}</p>
               </div>
             </div>
           </div>
 
           {/* Quick Voice Command Chips */}
           <div className="w-full text-left">
-            <span className="text-[10px] uppercase font-mono text-slate-400 block mb-2">Example Voice Commands:</span>
+            <span className="text-[10px] uppercase font-bold text-slate-400 block mb-2">Example Voice Commands:</span>
             <div className="flex flex-wrap gap-1.5">
               {[
                 'Start research on AI startups',
@@ -214,7 +213,7 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
                     setTranscript(cmd);
                     handleVoiceCommand(cmd);
                   }}
-                  className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700/80 text-[11px] text-slate-300 border border-slate-700 transition-colors"
+                  className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs text-slate-700 border border-slate-200 transition-colors"
                 >
                   "{cmd}"
                 </button>
@@ -222,7 +221,7 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
             </div>
           </div>
 
-          {/* Text input fallback for keyboard users */}
+          {/* Text input fallback */}
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -235,12 +234,12 @@ export const VoiceAssistantModal: React.FC<VoiceAssistantModalProps> = ({
               value={transcript}
               onChange={(e) => setTranscript(e.target.value)}
               placeholder="Or type voice command manually..."
-              className="flex-1 px-3 py-2 rounded-md bg-[#070B14] border border-slate-700 text-xs text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-blue-500 font-mono"
+              className="flex-1 px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
             />
             <button
               type="submit"
               disabled={isProcessing || !transcript.trim()}
-              className="px-3 py-2 rounded-md bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs font-medium flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Send</span>

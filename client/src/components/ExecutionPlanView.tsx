@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import {
   CheckCircle,
-  Clock,
   Play,
   Edit2,
   Check,
-  ShieldAlert,
-  ArrowRight,
-  AlertTriangle,
+  ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 import { WebPilotTask, PlanStep } from '../types';
 import { api } from '../services/api';
@@ -64,26 +62,25 @@ export const ExecutionPlanView: React.FC<ExecutionPlanViewProps> = ({
 
   return (
     <div className="space-y-4">
-      {/* Approval Gate Banner (Section 6 & 10 requirement) */}
+      {/* Friendly Approval Gate Banner */}
       {!isApproved && (
-        <div className="p-4 rounded-xl bg-gradient-to-r from-blue-950/60 via-slate-900 to-indigo-950/60 border border-blue-500/40 shadow-glow-sm">
+        <div className="p-5 rounded-xl bg-gradient-to-r from-blue-50 via-white to-indigo-50 border border-blue-200 shadow-sm">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-start gap-3">
-              <div className="p-2 rounded-lg bg-blue-600/20 border border-blue-400/30 text-blue-400 shrink-0">
-                <ShieldAlert className="w-5 h-5" />
+              <div className="p-2.5 rounded-lg bg-blue-600 text-white shrink-0 shadow-sm">
+                <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-semibold text-white">
-                    Approval Gate: Autonomous Plan Verification
+                  <h3 className="text-sm font-bold text-slate-900">
+                    Step 2: Review & Approve Execution Plan
                   </h3>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/40">
-                    MANDATORY HUMAN SIGN-OFF
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">
+                    Ready to Launch
                   </span>
                 </div>
-                <p className="text-xs text-slate-300 mt-1 max-w-2xl">
-                  Inspect the 8 execution stages below. Per system safety policy, consequential browser automation
-                  and Playwright navigation require explicit on-screen manual confirmation. (Voice agents cannot approve).
+                <p className="text-xs text-slate-600 mt-1 max-w-2xl leading-relaxed">
+                  ProofFlow generated this 8-step research workflow. Review the steps below and click <strong>Approve & Start Research</strong> to let the AI safely navigate the web.
                 </p>
               </div>
             </div>
@@ -91,17 +88,17 @@ export const ExecutionPlanView: React.FC<ExecutionPlanViewProps> = ({
             <button
               onClick={handleApprove}
               disabled={isApproving}
-              className="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-2 shadow-lg shadow-blue-600/30 shrink-0 transition-all active:scale-95 disabled:opacity-50"
+              className="px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 shrink-0 transition-all active:scale-95 disabled:opacity-50"
             >
               {isApproving ? (
                 <>
                   <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>Authorizing...</span>
+                  <span>Starting...</span>
                 </>
               ) : (
                 <>
-                  <Check className="w-4 h-4" />
-                  <span>Approve Plan & Launch Browser</span>
+                  <Play className="w-4 h-4 fill-white" />
+                  <span>Approve & Start Research</span>
                 </>
               )}
             </button>
@@ -109,31 +106,31 @@ export const ExecutionPlanView: React.FC<ExecutionPlanViewProps> = ({
         </div>
       )}
 
-      {/* Plan Header */}
-      <div className="flex items-center justify-between">
+      {/* Header */}
+      <div className="flex items-center justify-between px-1">
         <div>
-          <h2 className="text-sm font-bold text-slate-100 flex items-center gap-2">
-            <span>Autonomous Execution Plan</span>
-            <span className="text-xs font-mono text-slate-400 font-normal">
+          <h2 className="text-sm font-bold text-slate-800 flex items-center gap-2">
+            <span>Execution Plan</span>
+            <span className="text-xs font-normal text-slate-500">
               ({plan.length} verification stages)
             </span>
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500">
             {isApproved
-              ? 'Execution in progress. Stages update automatically in real time.'
-              : 'Click any step to edit prompt descriptions before approving.'}
+              ? 'Automation is running. Checkmarks update in real time as each step completes.'
+              : 'Feel free to tweak any step description before launching.'}
           </p>
         </div>
 
         {isApproved && (
-          <span className="text-xs font-mono px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
-            <CheckCircle className="w-3.5 h-3.5" />
-            Human Approved
+          <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5 shadow-sm">
+            <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+            Approved & Running
           </span>
         )}
       </div>
 
-      {/* Plan Steps Grid / List */}
+      {/* Plan Steps Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {plan.map((step, idx) => {
           const isEditing = editingId === step.id;
@@ -143,26 +140,26 @@ export const ExecutionPlanView: React.FC<ExecutionPlanViewProps> = ({
           return (
             <div
               key={step.id}
-              className={`p-3.5 rounded-lg border transition-all ${
+              className={`p-4 rounded-xl border transition-all ${
                 isActive
-                  ? 'bg-blue-950/20 border-blue-500 shadow-glow-sm'
+                  ? 'bg-blue-50/70 border-blue-400 shadow-sm'
                   : isDone
-                  ? 'bg-[#0F1626]/80 border-slate-800 text-slate-300'
-                  : 'bg-[#0F1626] border-slate-800/80 hover:border-slate-700'
+                  ? 'bg-slate-50/60 border-slate-200 text-slate-700'
+                  : 'bg-white border-slate-200 hover:border-slate-300 shadow-sm'
               }`}
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2.5">
                   <span
-                    className={`w-6 h-6 rounded-full flex items-center justify-center font-mono text-xs font-bold shrink-0 ${
+                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
                       isDone
-                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+                        ? 'bg-emerald-100 text-emerald-700'
                         : isActive
                         ? 'bg-blue-600 text-white animate-pulse'
-                        : 'bg-slate-800 text-slate-400 border border-slate-700'
+                        : 'bg-slate-100 text-slate-600'
                     }`}
                   >
-                    {isDone ? <Check className="w-3.5 h-3.5" /> : idx + 1}
+                    {isDone ? <Check className="w-3.5 h-3.5 text-emerald-700" /> : idx + 1}
                   </span>
 
                   {isEditing ? (
@@ -170,17 +167,17 @@ export const ExecutionPlanView: React.FC<ExecutionPlanViewProps> = ({
                       type="text"
                       value={editTitle}
                       onChange={(e) => setEditTitle(e.target.value)}
-                      className="px-2 py-1 rounded bg-slate-900 border border-blue-500 text-xs font-semibold text-white focus:outline-none"
+                      className="px-2 py-1 rounded bg-white border border-blue-500 text-xs font-semibold text-slate-900 focus:outline-none"
                     />
                   ) : (
-                    <h4 className="text-xs font-semibold text-slate-200">{step.title}</h4>
+                    <h4 className="text-xs font-semibold text-slate-800">{step.title}</h4>
                   )}
                 </div>
 
                 {!isApproved && !isEditing && (
                   <button
                     onClick={() => startEdit(step)}
-                    className="p-1 rounded text-slate-500 hover:text-slate-300 hover:bg-slate-800"
+                    className="p-1.5 rounded text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
                     title="Edit step"
                   >
                     <Edit2 className="w-3 h-3" />
@@ -190,10 +187,10 @@ export const ExecutionPlanView: React.FC<ExecutionPlanViewProps> = ({
                 {isEditing && (
                   <button
                     onClick={() => saveEdit(step.id)}
-                    className="p-1 rounded bg-blue-600 text-white hover:bg-blue-500 text-xs"
+                    className="p-1 px-2 rounded bg-blue-600 text-white hover:bg-blue-700 text-xs font-medium"
                     title="Save step"
                   >
-                    <Check className="w-3 h-3" />
+                    Save
                   </button>
                 )}
               </div>
@@ -203,28 +200,23 @@ export const ExecutionPlanView: React.FC<ExecutionPlanViewProps> = ({
                   value={editDesc}
                   onChange={(e) => setEditDesc(e.target.value)}
                   rows={2}
-                  className="w-full mt-2 p-1.5 rounded bg-slate-900 border border-blue-500 text-xs text-slate-200 focus:outline-none resize-none font-mono"
+                  className="w-full mt-2 p-2 rounded bg-white border border-blue-500 text-xs text-slate-800 focus:outline-none resize-none font-sans"
                 />
               ) : (
-                <p className="text-[11px] text-slate-400 mt-2 leading-relaxed pl-8">
+                <p className="text-xs text-slate-600 mt-2 leading-relaxed pl-8">
                   {step.description}
                 </p>
               )}
 
-              <div className="mt-2.5 pl-8 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                <span className="uppercase">
-                  Status:{' '}
-                  <span
-                    className={
-                      isDone
-                        ? 'text-emerald-400 font-bold'
-                        : isActive
-                        ? 'text-blue-400 font-bold'
-                        : 'text-slate-400'
-                    }
-                  >
-                    {step.status}
-                  </span>
+              <div className="mt-2.5 pl-8 flex items-center justify-between text-[11px] text-slate-400">
+                <span className="capitalize font-medium">
+                  {isDone ? (
+                    <span className="text-emerald-600 font-semibold">Completed</span>
+                  ) : isActive ? (
+                    <span className="text-blue-600 font-semibold animate-pulse">In Progress...</span>
+                  ) : (
+                    <span>Pending</span>
+                  )}
                 </span>
                 <span>Stage {idx + 1} of 8</span>
               </div>
