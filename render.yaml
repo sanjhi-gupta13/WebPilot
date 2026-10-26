@@ -4,8 +4,8 @@ services:
     runtime: node
     region: oregon
     rootDir: server
-    buildCommand: npm install && npx playwright install chromium
-    startCommand: npm run start
+    buildCommand: npm install && npm run build && npx playwright install chromium --with-deps
+    startCommand: npm run start:prod
     envVars:
       - key: PORT
         value: 10000
@@ -15,6 +15,9 @@ services:
         value: "true"
       - key: DATA_DIR
         value: /opt/render/project/src/data
+      # Persist Playwright browsers on the mounted disk so they survive restarts
+      - key: PLAYWRIGHT_BROWSERS_PATH
+        value: /opt/render/project/src/data/playwright-browsers
       - key: LLM_PROVIDER
         sync: false
       - key: OPENAI_API_KEY
